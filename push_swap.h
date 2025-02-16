@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:31:56 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/12 15:49:20 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/16 13:54:55 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_list
 	int				data;
 	size_t			index;
 	int				position;
+	int				cost;
 	struct s_list	*target;
 	struct s_list	*next;
 }	t_list;
@@ -41,8 +42,10 @@ void	sa(t_list **lst);
 void	sb(t_list **lst);
 void	pa(t_list **lst_a, t_list **lst_b);
 void	pb(t_list **lst_a, t_list **lst_b);
+void	rr(t_list **stack_a, t_list **stack_b);
 void	ra(t_list **lst);
 void	rb(t_list **lst);
+void	rrr(t_list **stack_a, t_list **stack_b);
 void	rra(t_list **lst);
 void	rrb(t_list **lst);
 

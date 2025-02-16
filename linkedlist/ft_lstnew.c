@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:29:29 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/11 10:29:33 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/16 11:02:52 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_list	*ft_lstnew(int content, int index)
 	element->data = content;
 	element->target = NULL;
 	element->position = 0;
+	element->cost = 0;
 	element->index = index;
 	element->next = NULL;
 	return (element);
