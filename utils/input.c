@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:31:06 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/11 14:01:35 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/16 21:44:58 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,10 @@ static int	**atoi_arg(char **str, int *count)
 		tab[i] = malloc(sizeof(int));
 		if (!tab[i])
 			return (ft_free_tab_str(&str), ft_free_int(&tab), NULL);
-		*(tab[i]) = (int)res;
+		*(tab[i]) = res;
 		i++;
 	}
-	tab[i] = NULL;
-	return (tab);
+	return (tab[i] = NULL, tab);
 }
 
 static int	check_error(char *str)
