@@ -6,60 +6,13 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:31:35 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/12 15:50:08 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/16 21:26:13 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	finish_sort(t_list **stack_a, t_list **stack_b)
-{
-	int	max;
-	int	count;
-
-	count = ft_lstsize(*stack_b);
-	while (count > 0)
-	{
-		max = get_max_stack(*stack_b);
-		ft_move_node_b_to_top(stack_b, max);
-		pa(stack_a, stack_b);
-		count--;
-	}
-	ft_free_stack(stack_b);
-	ft_free_stack(stack_a);
-}
-
-void	ft_push_if_range(t_list **stack_a, t_list **stack_b, int count)
-{
-	int	small;
-	int big =(count * 0.048) + 10;
-
-	small = 0;
-	while (count-- > 0)
-	{
-		if ((int)(*stack_a)->index >= small && (int)(*stack_a)->index <= big)
-		{
-			pb(stack_a, stack_b);
-			small++;
-			big++;
-		}
-		else if ((int)(*stack_a)->index > big)
-		{
-			ra(stack_a);
-			count++;
-		}
-		else
-		{
-			pb(stack_a, stack_b);
-			rb(stack_b);
-			small++;
-			big++;
-		}
-	}
-}
-
-
-void	ft_sort(int **tab, int count)
+static void	ft_sort(int **tab, int count)
 {
 	int	i;
 	int	j;
@@ -84,6 +37,28 @@ void	ft_sort(int **tab, int count)
 		i++;
 	}
 	tab[i] = NULL;
+}
+
+int	ft_get_cost(t_list *stack, t_list *tmp)
+{
+	int	len;
+	int	coust;
+
+	coust = 0;
+	len = tmp->index;
+	if (len == 0)
+		return (0);
+	if ((int)tmp->index <= ft_lstsize(stack) / 2)
+	{
+		while (len-- > 0)
+			coust++;
+	}
+	else
+	{
+		while (len++ < ft_lstsize(stack))
+			coust++;
+	}
+	return (coust);
 }
 
 int	**ft_sort_int_tab(int **tab, int count)

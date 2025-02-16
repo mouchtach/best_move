@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:31:56 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/16 13:54:55 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/16 21:26:26 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
-
-
-
 
 typedef struct s_list
 {
@@ -49,44 +46,46 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 void	rra(t_list **lst);
 void	rrb(t_list **lst);
 
-//input
-int		**get_int_arg(int argc, char **argv, int *count);
-
-//linkedlist
-t_list	*ft_create_stack(int **input, int count);
-t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstnew(int content, int index);
-void	ft_lstclear(t_list **lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-
-//sort
-void	ft_sort_tow(t_list **lst);
-void	ft_sort_three(t_list **lst);
-void	ft_sort_four(t_list **lst_a, t_list **lst_b);
-void	ft_sort_five(t_list **lst_a, t_list **lst_b);
-void	ft_sort_if_tive(t_list **lst_a, t_list **lst_b, int count);
-
-//utils_push
-int		find_index_data(t_list *stack, int value);
-void	ft_move_node_a_to_top(t_list **stack, int value);
-void	ft_move_node_b_to_top(t_list **stack, int value);
-int		get_min_stack(t_list *stack);
-int		get_max_stack(t_list *stack);
-
-//utils_sort
-void	finish_sort(t_list **stack_a, t_list **stack_b);
-void	ft_push_if_range(t_list **stack_a, t_list **stack_b, int count);
-void	ft_sort(int **tab, int count);
-int		**ft_sort_int_tab(int **tab, int count);
-
 //libft
 long	ft_atoi(const char *str);
-char	**ft_split(char const *s, char c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *s);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+//linked_list
+t_list	*ft_create_stack(int **input, int count);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstclear(t_list **lst);
+t_list	*ft_lstnew(int content, int index);
+int		ft_lstsize(t_list *lst);
+
+//utils_sort
+int		**ft_sort_int_tab(int **tab, int count);
+int		ft_get_cost(t_list *stack, t_list *tmp);
+
+//sort
+void	ft_sort_if_three(t_list **lst_a, t_list **lst_b, int count);
+void	ft_sort_tow(t_list **lst);
+void	ft_sort_three(t_list **lst);
+int		get_range(t_list *stack);
+t_list	*get_min_cost(t_list *stack);
+
+//set_struct
+void	set_target(t_list **stack_a, t_list **stack_b);
+void	set_index(t_list **stack_a, t_list **stack_b);
+void	set_cost(t_list **stack_a, t_list **stack_b);
+void	set_position(t_list **stack_a, t_list **stack_b);
+
+//utils_push
+void	ft_move_node_a_to_top(t_list **stack, int value);
+void	ft_move_node_b_to_top(t_list **stack, int value);
+void	push_if_range(t_list **stack_a, t_list **stack_b);
+int		get_min_stack(t_list *stack);
+
+//input 
+int		**get_int_arg(int argc, char **argv, int *count);
 
 #endif

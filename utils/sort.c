@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:31:15 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/11 10:31:17 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/16 21:02:55 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,42 +49,39 @@ void	ft_sort_three(t_list **lst)
 		return ;
 }
 
-void	ft_sort_four(t_list **stack_a, t_list **stack_b)
+int	get_range(t_list *stack)
 {
-	int	min;
+	t_list	*tmp;
+	int		total;
 
-	min = get_min_stack(*stack_a);
-	ft_move_node_a_to_top(stack_a, min);
-	pb(stack_a, stack_b);
-	ft_sort_three(stack_a);
-	pa(stack_a, stack_b);
+	tmp = stack;
+	total = 0;
+	while (tmp)
+	{
+		total += tmp->data;
+		tmp = tmp->next;
+	}
+	return (total / ft_lstsize(stack));
 }
 
-void	ft_sort_five(t_list **stack_a, t_list **stack_b)
+t_list	*get_min_cost(t_list *stack)
 {
-	int	min;
+	t_list	*small;
 
-	min = get_min_stack(*stack_a);
-	ft_move_node_a_to_top(stack_a, min);
-	pb(stack_a, stack_b);
-	min = get_min_stack(*stack_a);
-	ft_move_node_a_to_top(stack_a, min);
-	pb(stack_a, stack_b);
-	ft_sort_three(stack_a);
-	pa(stack_a, stack_b);
-	pa(stack_a, stack_b);
+	small = stack;
+	while (stack)
+	{
+		if (small->cost > stack->cost)
+			small = stack;
+		stack = stack->next;
+	}
+	return (small);
 }
 
-void	ft_sort_if_tive(t_list **lst_a, t_list **lst_b, int count)
+void	ft_sort_if_three(t_list **lst_a, t_list **lst_b, int count)
 {
 	if (count == 2)
 		ft_sort_tow(lst_a);
-	else if (count == 3)
+	else 
 		ft_sort_three(lst_a);
-	else if (count == 4)
-		ft_sort_four(lst_a, lst_b);
-	else if (count == 5)
-		ft_sort_five(lst_a, lst_b);
-	ft_free_stack(lst_b);
-	ft_free_stack(lst_a);
 }

@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SOURCES  = push_swap.c utils/free.c utils/input.c utils/sort.c utils/utils_push.c utils/utils_sort.c\
+SOURCES  = push_swap.c utils/free.c utils/input.c utils/set_struct.c utils/sort.c utils/utils_push.c utils/utils_sort.c\
 	operations/pa.c operations/pb.c operations/ra.c operations/rb.c \
 	operations/rra.c operations/rrb.c operations/rrr.c \
 	operations/sa.c operations/sb.c  operations/rr.c\

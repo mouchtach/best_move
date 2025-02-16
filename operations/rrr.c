@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rrr.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/16 21:24:01 by ymouchta          #+#    #+#             */
+/*   Updated: 2025/02/16 21:24:03 by ymouchta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 void	rrr(t_list **stack_a, t_list **stack_b)
@@ -14,8 +26,7 @@ void	rrr(t_list **stack_a, t_list **stack_b)
 	tmp->next = NULL;
 	tmp2->next = *stack_a;
 	*stack_a = tmp2;
-
-    if (!stack_b || !*stack_b || !(*stack_b)->next)
+	if (!stack_b || !*stack_b || !(*stack_b)->next)
 		return ;
 	tmp = *stack_b;
 	while (tmp->next->next)

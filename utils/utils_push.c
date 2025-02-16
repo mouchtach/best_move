@@ -6,13 +6,13 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:31:26 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/11 10:31:28 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/16 21:13:29 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	find_index_data(t_list *stack, int value)
+static int	find_index_data(t_list *stack, int value)
 {
 	t_list	*tmp;
 	int		index;
@@ -27,6 +27,31 @@ int	find_index_data(t_list *stack, int value)
 		index++;
 	}
 	return (-1);
+}
+
+void	push_if_range(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*tmp;
+	int		range;
+
+	range = get_range(*stack_a);
+	tmp = *stack_a;
+	while (tmp && ft_lstsize(*stack_a) > 3)
+	{
+		if (tmp->data <= range)
+		{
+			ft_move_node_a_to_top(stack_a, tmp->data);
+			pb(stack_a, stack_b);
+			tmp = *stack_a;
+		}
+		else
+			tmp = tmp->next;
+	}
+	tmp = *stack_a;
+	while (ft_lstsize(*stack_a) > 3)
+		pb(stack_a, stack_b);
+	if (ft_lstsize(*stack_a) == 3)
+		ft_sort_three(stack_a);
 }
 
 void	ft_move_node_b_to_top(t_list **stack, int value)
@@ -93,20 +118,4 @@ int	get_min_stack(t_list *stack)
 		tmp = tmp->next;
 	}
 	return (min);
-}
-
-int	get_max_stack(t_list *stack)
-{
-	t_list	*tmp;
-	int		max;
-
-	tmp = stack;
-	max = stack->data;
-	while (tmp)
-	{
-		if (max < tmp->data)
-			max = tmp->data;
-		tmp = tmp->next;
-	}
-	return (max);
 }

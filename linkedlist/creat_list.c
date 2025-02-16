@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:28:39 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/11 10:29:06 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/16 21:22:14 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_list	*ft_create_stack(int **input, int count)
 {
 	t_list	*stack;
 	t_list	*tmp;
-	int 	**sorted;
+	int		**sorted;
 	int		index;
 	int		i;
 
