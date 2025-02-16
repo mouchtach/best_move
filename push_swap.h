@@ -16,6 +16,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -47,7 +48,7 @@ void	rra(t_list **lst);
 void	rrb(t_list **lst);
 
 //libft
-long	ft_atoi(const char *str);
+int		ft_atoi(const char *str, int *check);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);

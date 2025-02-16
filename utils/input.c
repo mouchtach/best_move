@@ -43,10 +43,12 @@ static int	if_double_sort(int **tab)
 static int	**atoi_arg(char **str, int *count)
 {
 	int		i;
+	int		check;
 	long	res;
 	int		**tab;
 
 	i = 0;
+	check = 0;
 	while (str[*count])
 		(*count)++;
 	tab = (int **)malloc(sizeof(int *) * (*count + 1));
@@ -55,8 +57,8 @@ static int	**atoi_arg(char **str, int *count)
 	while (i < *count)
 	{
 		tab[i] = NULL;
-		res = ft_atoi(str[i]);
-		if (res > 2147483647 || res < -2147483648)
+		res = ft_atoi(str[i], &check);
+		if (check == 1)
 			return (ft_free_int(&tab), ft_free_tab_str(&str), ft_error(), NULL);
 		tab[i] = malloc(sizeof(int));
 		if (!tab[i])
